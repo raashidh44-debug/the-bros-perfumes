@@ -1223,7 +1223,7 @@ const DEFAULT_PRODUCTS = [
 // STEP 2: Replace the key below with a restricted Access Key (Bins: Read + Update
 //         only) created on your JSONBin "API Keys" page, instead of the master key.
 const JSONBIN_BIN_ID     = '6a69ae6df5f4af5e29d03a1b';
-const JSONBIN_ACCESS_KEY = '$2a$10$lBlSSElRR/jaljJ61JGCGudHyOSCgOkC9mwZjZIhmnQdOqSOoyYaC';
+const JSONBIN_ACCESS_KEY = '$2a$10$YmdhsCUuy3GbQXa7dJIiNuRRnvRouwLzpxVRDJMy8CuhJLvv3UuJq';
 const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
 
 async function loadStoreData() {
@@ -1372,7 +1372,6 @@ function shippingLabel() {
 window.onload = async function() {
   await loadStoreData();
   initializeDataDefaults();
-  showDebugBanner();
   populateCitySelect();
   populateCategoryFilter();
   updateAuthUI();
@@ -1391,16 +1390,6 @@ window.onload = async function() {
     setTimeout(() => { logoClicks = 0; }, 2000);
   });
 };
-
-// TEMPORARY DEBUG BANNER — remove this function and its call above once syncing is confirmed working
-function showDebugBanner() {
-  const banner = document.createElement('div');
-  banner.style.cssText = 'background:#000;color:#0f0;font-family:monospace;font-size:12px;padding:8px;text-align:center;word-break:break-all;';
-  banner.textContent = 'DEBUG — Bin ID ends in: ...' + JSONBIN_BIN_ID.slice(-6) +
-    ' | Products loaded: ' + PRODUCTS.length +
-    ' | Source: ' + (window.__cloudLoadOK ? 'CLOUD ✅' : 'LOCAL FALLBACK ⚠️');
-  document.body.insertBefore(banner, document.body.firstChild);
-}
 
 function populateCitySelect() {
   const select = document.getElementById('regCity');
